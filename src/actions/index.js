@@ -17,7 +17,7 @@ export const FAILURE = "FAILURE";
 const getAllCountries = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/country");
+      const response = await axios.get("/country");
 
       dispatch({
         type: GET_ALL_COUNTRIES,
@@ -38,7 +38,7 @@ const getOneCountry = (payload, payloadCont) => {
   return async (dispatch) => {
     try {
       const responseOne = await axios.get(
-        `http://localhost:3001/country?name=${payload}`
+        `/country?name=${payload}`
       );
 
       dispatch({
@@ -61,7 +61,7 @@ const DetailCountryCardById = (payload) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/country/${payload}`
+        `/country/${payload}`
       );
 
       dispatch({
@@ -111,7 +111,7 @@ const postActivity = (payload) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        "http://localhost:3001/activity",
+        "/activity",
         payload
       );
       console.log(response);
@@ -129,7 +129,7 @@ const postActivity = (payload) => {
 //para tomar los nombres para el select  del filtro actv
 const getAllActivities = () => {
   return async (dispatch) => {
-    const responseActivity = await axios.get(`http://localhost:3001/activity`);
+    const responseActivity = await axios.get(`/activity`);
 
     dispatch({
       type: GET_ALL_ACTIVITIES,
