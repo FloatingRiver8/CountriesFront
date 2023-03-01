@@ -17,7 +17,7 @@ export const FAILURE = "FAILURE";
 const getAllCountries = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("/country");
+      const response = await axios.get('/country');
 
       dispatch({
         type: GET_ALL_COUNTRIES,
