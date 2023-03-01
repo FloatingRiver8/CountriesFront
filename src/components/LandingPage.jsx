@@ -7,7 +7,7 @@ function LandingPage() {
     return (
         <div className={`${s.landing_cardDiv}`}>
             
-            <Link to='/home'><button className={`${s.landing_button}`}> <p>Home</p></button></Link>
+            <Link to='/home'><button className={`${s.landing_button}`}> <p>Welcome!</p></button></Link>
 
         </div>
     )
