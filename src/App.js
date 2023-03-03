@@ -7,11 +7,13 @@ import Home from "./components/Home";
 
 import Form from "./components/Form";
 import DetailCountryCard from "./components/DetailCountryCard";
- 
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from "./Theme";
 
 
 function App() {
   return (
+    <ChakraProvider  theme={theme}>
     <BrowserRouter>
       <div className="App">
         <Route exact path="/" component={LandingPage}></Route>
@@ -20,6 +22,8 @@ function App() {
         <Route exact path="/country/:id" component={DetailCountryCard}></Route>
       </div>
     </BrowserRouter>
+    </ChakraProvider>
+   
   );
 }
 

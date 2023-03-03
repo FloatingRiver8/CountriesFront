@@ -7,13 +7,13 @@ import {Provider} from 'react-redux';
 import {store} from './store'
 import axios from 'axios'
 
-/* axios.defaults.baseURL = 'http://localhost:3001' *///para local
- axios.defaults.baseURL = 'https://countriesback-production-960b.up.railway.app/' //cuando quiera actualizar, pushear debo usar esta
+axios.defaults.baseURL = 'http://localhost:3001' //para local
+ /* axios.defaults.baseURL = 'https://countriesback-production-960b.up.railway.app/' */ //cuando quiera actualizar, pushear debo usar esta
 
 ReactDOM.render(
 <Provider store = { store }>
   <React.StrictMode>
-    <App />
+    <App /> 
   </React.StrictMode>,
   </Provider>,
   document.getElementById('root')

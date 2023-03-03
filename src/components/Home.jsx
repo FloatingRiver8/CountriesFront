@@ -14,8 +14,7 @@ import Error from './Error'
 import s from './styles/home.module.css'
 import f from './styles/form.module.css'
 
-
-
+import { Box, SimpleGrid, Center, FormControl, FormLabel, Select, Button, Heading, GridItem } from '@chakra-ui/react'
 
 function Home() {
     const dispatch = useDispatch()
@@ -28,9 +27,9 @@ function Home() {
 
     const activity = useSelector((state) => state.allActivities)
 
-   
 
- 
+
+
 
 
 
@@ -71,9 +70,9 @@ function Home() {
     useEffect(() => {
         dispatch(getAllCountries())
         dispatch(getAllActivities())
-       
-  
-    }, [dispatch, ])
+
+
+    }, [dispatch,])
 
 
 
@@ -86,7 +85,7 @@ function Home() {
             dispatch(orderByAlphabet("Z-A"))
         } else {
             dispatch(orderByAlphabet("A-Z"))
-        } 
+        }
 
         setContFilter(e.target.value)//actualiza el estado del filtro para renderizar
     }
@@ -117,87 +116,182 @@ function Home() {
 
 
     return (
-        <div >
-            <div className={`${s.home_cardDiv}`}>
-                <SearchBar contFilter={contFilter} className={`${s.home_select}`} />
+        <Box  >
 
+            <Box bg={"brand.100"} maxH='full' pt='2rem'>
+                <Heading color= 'gray.500' fontSize='3.5rem'>Enjoy your search!{" "}</Heading>
+                         
 
+                <Box align={'right'} pr='3rem'>
+                            <Link to='/form' >
+                                <Button >
+                                    Create activity
+                                </Button>
+                            </Link>
+                        </Box>
 
-                <div>
-                    <select onChange={handleOnContinents} className={`${s.home_select}`}>
-                        <option value='All continents' key='All continents'>All continents</option>
-                        <option value='Africa' key='Africa'>Africa</option>
-                        <option value='Antarctica' key='Antarctica'>Antarctica</option>
-                        <option value='Europe' key='Europe'>Europe</option>
-                        <option value='North America' key='North America'>North America</option>
-                        <option value='Oceania' key='Oceania'>Oceania</option>
-                        <option value='South America' key='South America'>South America</option>
-                        <option value='Asia' key='Asia'>Asia</option>
-                    </select>
-                </div>
+                <SimpleGrid columns={[1]} spacing='7rem'>
+                    <Center>
+                        <Box  w={["80%","70%","40%","30%"]} >
+                            <SearchBar contFilter={contFilter} />
+                        </Box>
 
-                <div>
-                    <select defaultValue={'A-Z'} onChange={handleOnAlphabet} className={`${s.home_select}`}>
-                        <option value="A-Z" key="ascendent">A-Z</option>
-                        <option value="Z-A" key="descendent">Z-A</option>
-                    </select>
-                </div>
-
-                <div>
-                    <select onChange={handleOnPopulation} className={`${s.home_select}`}>
-                        <option value="population" name="population">Population</option>
-                        <option value="min" key="min">Min</option>
-                        <option value="max" key="max">Max</option>
-                    </select>
-                </div>
+                    </Center>
+                </SimpleGrid>
 
 
 
 
-                {/* //Filtro PAISES por ACTIVIDADES*/}
-                <div>
-                    <select onChange={handleOnActivity} className={`${s.home_select}`} >
-                        <option value="1" name="default">Activity</option>
-                        {
-                            uniqueActivities.map((e) => {
-                                return (
-                                    <option value={e} name="activity" key={e}>{e} </option>
-                                )
 
-                            })}
-                    </select>
-                </div>
+                <SimpleGrid w="100%" /* my={['1rem', '1rem', '1rem']} */ columns={[2, 2, 4, 4]} spacing='4px'>
+                    <Center>
+                        {/* FORM ACTIVITY */}
+
+                        <Box w="60%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
+                            <FormControl>
+                                <Center>
+                                    <FormLabel
+                                        fontFamily={"heading"}
+                                        textTransform={"uppercase"}
+                                        fontWeight={"bold"}
+                                        color={"orange.400"}
+                                    >
+                                        Continent
+                                    </FormLabel>
+                                </Center>
+                                <Select
+
+                                    id="continent"
+                                    /* placeholder="All" */
+                                    onChange={(e) => handleOnContinents(e)}
+                                >
+                                    <option value='All' key='all'>All</option>
+                                    <option value='Africa' key='Africa'>Africa</option>
+                                    <option value='Antarctica' key='Antarctica'>Antarctica</option>
+                                    <option value='Europe' key='Europe'>Europe</option>
+                                    <option value='North America' key='North America'>North America</option>
+                                    <option value='Oceania' key='Oceania'>Oceania</option>
+                                    <option value='South America' key='South America'>South America</option>
+                                    <option value='Asia' key='Asia'>Asia</option>
+
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </Center>
+
+                    <Center>
+                        <Box w="60%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
+                            <FormControl>
+                                <Center>
+                                    <FormLabel
+                                        fontFamily={"heading"}
+                                        textTransform={"uppercase"}
+                                        fontWeight={"bold"}
+                                        color={"orange.400"}
+                                    >
+                                        Alph. order
+                                    </FormLabel>
+                                </Center>
+                                <Select
+                                    id="onAlphabet"
+                                    defaultValue={'A-Z'}
+                                    onChange={(e) => handleOnAlphabet(e)}
+                                    placeholder="-"
+                                >
+                                    <option value="A-Z" key="ascendent">A-Z</option>
+                                    <option value="Z-A" key="descendent">Z-A</option>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </Center>
+
+                    <Center>
+                        <Box w="60%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
+                            <FormControl>
+                                <Center>
+                                    <FormLabel
+                                        fontFamily={"heading"}
+                                        textTransform={"uppercase"}
+                                        fontWeight={"bold"}
+                                        color={"orange.400"}
+                                    >
+                                        Population
+                                    </FormLabel>
+                                </Center>
+                                <Select
+                                    id="population"
+                                    onChange={(e) => handleOnPopulation(e)}
+                                    placeholder="-"
+                                >
+                                   {/*  <option value="population" name="population">Population</option> */}
+                                    <option value="min" key="min">Min</option>
+                                    <option value="max" key="max">Max</option>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </Center>
 
 
-                <div>
 
-                    {/* FORM ACTIVITY */}
-                    <Link to='/form' >
-                        <button className={`${f.home_btn_createActivity}`}>
-                            <p> Create activity</p>
-                        </button>
-                    </Link>
-                </div>
+                    <Center>
+                        <Box w="60%" my={["0.5rem", "0.5rem", "1rem"]}>
+                            <FormControl>
+                                <Center>
+                                    <FormLabel
+                                        fontFamily={"heading"}
+                                        textTransform={"uppercase"}
+                                        fontWeight={"bold"}
+                                        color={"orange.400"}
+                                    >
+                                        Activity
+                                    </FormLabel>
+                                </Center>
+                                <Select
+                                    id="activity"
+                                    onChange={(e) => handleOnActivity(e)}
+                                    placeholder="-"
+
+                                >
+
+                                    {/* Activity */}
+                                    <option value="1" name="default">Activity</option>
+                                    {
+                                        uniqueActivities.map((e) => {
+                                            return (
+                                                <option value={e} name="activity" key={e}>{e} </option>
+                                            )
+
+                                        })}
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </Center>
 
 
 
-                <Paginate
-                    countryPerPage={countryPerPage}
-                    allCountries={allCountries.length}
-                    paginator={paginator}
-                />
+                    <Paginate
+                        countryPerPage={countryPerPage}
+                        allCountries={allCountries.length}
+                        paginator={paginator}
+                    />
+                </SimpleGrid>
 
-            </div>
+            </Box>
+
 
             {/* //SHOWING CARDS */}
-
-            {error ? <Error /> : <Card country={country}/> }
-
-        </div>
-
-
+            <Center bg='brand.400' py={["0.5rem", "0.5rem", "2rem"]}>
+                <SimpleGrid columns={[1, 1, 2, 3]} spacing={50}>
+                    {error ? (<Error />) : (country.length && country.map(el => (
+                        < Link to={`/country/${el.id}`} style={{ textDecoration: 'none' }} >
+                            <Card country={el} />
+                        </Link>
+                    ))
+                    )}
+                </SimpleGrid>
+            </Center>
+        </Box>
     )
-
 }
 
 

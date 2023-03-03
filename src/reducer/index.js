@@ -72,7 +72,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         allCountries:
-          action.payload === "All continents" ? countries : filteredContinents,
+          action.payload === "All" ? countries : filteredContinents,
       };
 
 

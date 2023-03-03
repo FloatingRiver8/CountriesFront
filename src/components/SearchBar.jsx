@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux'
 import { getOneCountry } from '../actions'
 import style from './styles/searchBar.module.css'
 
-
-
+import { Box, Center, Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
+import { BiSearchAlt} from 'react-icons/bi'
 
 
 export default function SearchBar({ contFilter }) {
@@ -36,12 +36,23 @@ export default function SearchBar({ contFilter }) {
     return (
         <div>
 
-            <div >
-                <label>SearchBar  </label>
-                <input type="text" onChange={handleChange} className={`${style.home_searchInput}`}></input>
-            </div>
-
-
+            {/* //SearchBar */}
+            <Box bg={"brand.green.100"}>
+               
+                    <Box w='100%'  pb= '1rem'/* mt={['2rem', '2rem', '3rem']} ml={['0rem', '0', '0']} */>
+                    <InputGroup >
+                          <InputRightElement
+                            pointerEvents="none"
+                            children={<BiSearchAlt color="gray.800" />}
+                          />
+                        <Input h="3rem"  type="text"  w={['100%', '100%', '100%', '100%']}
+                            onChange={(e) => handleChange(e)}
+                            placeholder="Search country..." 
+                            />
+                            </InputGroup>
+                    </Box>
+            
+            </Box>
         </div>
     )
 }
