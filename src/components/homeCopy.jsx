@@ -1,5 +1,4 @@
-
-import { useEffect, useState  } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -11,20 +10,10 @@ import Card from './Card'
 
 
 import Error from './Error'
+import s from './styles/home.module.css'
+import f from './styles/form.module.css'
 
-
-import { Box, SimpleGrid, Center, FormControl, FormLabel, Select, Button, Heading, Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    useDisclosure} from '@chakra-ui/react'
-
-   
-  
-
-    
+import { Box, SimpleGrid, Center, FormControl, FormLabel, Select, Button, Heading, GridItem } from '@chakra-ui/react'
 
 function Home() {
     const dispatch = useDispatch()
@@ -37,13 +26,15 @@ function Home() {
 
     const activity = useSelector((state) => state.allActivities)
 
-/* Drawer */
-    const { isOpen, onOpen, onClose } = useDisclosure()
+
+
+
+
 
 
     //Paginate
     const [currentPage, setCurrentPage] = useState(1);
-    const countryPerPage = 15;
+    const countryPerPage = 9;
     const indexOfLastCountry = currentPage * countryPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countryPerPage;
     //me devuelve un array con 15 elementos del 0 al 14.
@@ -124,10 +115,10 @@ function Home() {
 
 
     return (
-        <Box  bg={"brand.100"} maxH='100vH'>
+        <Box  >
 
-            <Box bg={"brand.100"}  pt='2rem' pb='5rem'>
-                <Heading color='gray.500' fontSize='3.5rem'>Your world Safari!{" "}</Heading>
+            <Box bg={"brand.100"} maxH='full' pt='2rem'>
+                <Heading color='gray.500' fontSize='3.5rem'>Enjoy your search!{" "}</Heading>
 
                         {/* TO FORM ACTIVITY */}
 
@@ -150,32 +141,33 @@ function Home() {
 
 
 
-{/* DRAWER */}
 
 
-      <Button color= 'brand.500' bg="brand.100" _hover={{ color:'orange.300'}} onClick={onOpen}>
-        CLICK HERE TO SEARCH BY...
-      </Button>
+                <SimpleGrid w="100%" /* my={['1rem', '1rem', '1rem']} */ columns={[2, 2, 4, 4]} spacing='4px'>
+                    <Center>
 
-      <Drawer placement={'top'} onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader  bg="brand.100"  color= 'gray.500'textAlign={'center'} fontFamily='heading' borderBottomWidth='1px'>Countries by...</DrawerHeader>
-          <DrawerBody bg="brand.100">
-          <Center>
-            <SimpleGrid columns={[2, 2, 4, 4]} spacing = '2rem'>
-               
-          <Box w="100%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
+                        <Box w="62%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
                             <FormControl>
+                                <Center>
+{/*                                     <FormLabel
+                                        fontFamily={"heading"}
+                                        textTransform={"uppercase"}
+                                        fontWeight={"bold"}
+                                        color={"orange.400"}
+                                    >
+                                        Continent
+                                    </FormLabel> */}
+                                </Center>
                                 <Select
+
                                     id="continent"
-                                    bg="brand.100"                                  
+                                    bg="brand.100"
+                                    
                                     fontFamily={"heading"}
                                     textTransform={"uppercase"}
                                     textAlign='center'
-                                    fontWeight={"bold"} 
-                                     fontSize={'md'}  
-                                    color={"brand.500"}
+                                    fontWeight={"bold"}
+                                    color={"orange.400"}
                                     defaultValue={'ALL CONTINENTS'}
                                     /* placeholder="ALL CONTINENTS"  */
                                     onChange={(e) => handleOnContinents(e)}
@@ -192,11 +184,21 @@ function Home() {
                                 </Select>
                             </FormControl>
                         </Box>
-                  
+                    </Center>
 
-                    
-                        <Box w="100%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
+                    <Center>
+                        <Box w="60%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
                             <FormControl>
+                                <Center>
+{/*                                     <FormLabel
+                                        fontFamily={"heading"}
+                                        textTransform={"uppercase"}
+                                        fontWeight={"bold"}
+                                        color={"orange.400"}
+                                    >
+                                        Alph. order
+                                    </FormLabel> */}
+                                </Center>
                                 <Select
                                     id="onAlphabet"
                                     bg="brand.100"
@@ -204,9 +206,8 @@ function Home() {
                                     fontFamily={"heading"}
                                     textTransform={"uppercase"}
                                     textAlign='center'
-                                    fontWeight={"bold"} 
-                                    fontSize={'md'}  
-                                    color={"brand.500"}
+                                    fontWeight={"bold"}
+                                    color={"orange.400"}
                                     defaultValue={'ORDER'}
                                     onChange={(e) => handleOnAlphabet(e)}
                                 >
@@ -215,11 +216,22 @@ function Home() {
                                 </Select>
                             </FormControl>
                         </Box>
-                    
+                    </Center>
 
-                    
-                        <Box w="100%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
+                    <Center>
+                        <Box w="60%" /* my={["0.5rem", "0.5rem", "1rem"]} */>
                             <FormControl>
+                                <Center>
+  {/*                                   <FormLabel
+                                        fontFamily={"heading"}
+                                        textTransform={"uppercase"}
+                                        fontWeight={"bold"}
+                                        color={"orange.400"}
+                                    >
+                                        POPULATION
+                                    </FormLabel> */}
+                                </Center>
+                                
                                 <Select
                                     id="population"
                                     bg="brand.100"
@@ -227,9 +239,8 @@ function Home() {
                                     fontFamily={"heading"}
                                     textTransform={"uppercase"}
                                     textAlign='center'
-                                    fontWeight={"bold"} 
-                                    fontSize={'md'}  
-                                    color={"brand.500"}
+                                    fontWeight={"bold"}
+                                    color={"orange.400"}
                                     defaultValue={'POPULATION'}
                                     onChange={(e) => handleOnPopulation(e)}
 
@@ -241,13 +252,23 @@ function Home() {
                                 
                             </FormControl>
                         </Box>
-                
+                    </Center>
 
 
 
-                    
-                        <Box w="100%" my={["0.5rem", "0.5rem", "0rem"]}>
+                    <Center>
+                        <Box w="60%" my={["0.5rem", "0.5rem", "1rem"]}>
                             <FormControl>
+                                <Center>
+{/*                                     <FormLabel
+                                        fontFamily={"heading"}
+                                        textTransform={"uppercase"}
+                                        fontWeight={"bold"}
+                                        color={"orange.400"}
+                                    >
+                                        Activity
+                                    </FormLabel> */}
+                                </Center>
                                 <Select
                                     id="activity"
                                     bg="brand.100"
@@ -255,9 +276,8 @@ function Home() {
                                     fontFamily={"heading"}
                                     textTransform={"uppercase"}
                                     textAlign='center'
-                                    fontWeight={"bold"} 
-                                    fontSize={'md'}  
-                                    color={"brand.500"}
+                                    fontWeight={"bold"}
+                                    color={"orange.400"}
                                     defaultValue={'activity'}
                                     onChange={(e) => handleOnActivity(e)}
 
@@ -276,16 +296,10 @@ function Home() {
                                 </Select>
                             </FormControl>
                         </Box>
-                      
-                        </SimpleGrid>  
-                        </Center>                   
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+                    </Center>
 
 
 
-                <SimpleGrid w="100%"  column={[1]} spacing='4px'>
                     <Paginate
                         countryPerPage={countryPerPage}
                         allCountries={allCountries.length}
@@ -297,8 +311,8 @@ function Home() {
 
 
             {/* //SHOWING CARDS */}
-            <Center bg='brand.100'  py={["0.5rem", "0.5rem", "1rem"]}  px={["0.5rem", "0.5rem", "2rem"]}>
-                <SimpleGrid columns={[1, 2, 3, 4]} spacing={'2rem'}>
+            <Center bg='brand.400' py={["0.5rem", "0.5rem", "2rem"]}>
+                <SimpleGrid columns={[1, 1, 2, 3]} spacing={50}>
                     {error ? (<Error />) : (country.length && country.map(el => (
                         < Link to={`/country/${el.id}`} style={{ textDecoration: 'none' }} >
                             <Card   country={el} />

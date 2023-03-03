@@ -9,6 +9,7 @@ import {
     Text,
     Stack,
     Image,
+   
 } from '@chakra-ui/react';
 
 
@@ -19,53 +20,61 @@ export default function Card({ country }) {
     return (
         <div >
             <div key={`${country.id}`}>
-                <Center py={12}>
+                <Center py={10}>
                     <Box
                         role={'group'}
-                        p={6}
+                        p={10}
                         maxW={'330px'}
                         w={'full'}
-                        bg="gray.300"/* {useColorModeValue('white', 'gray.800')} */
+                        bg="brand.100" 
+                        _hover={{ bg:'orange.200'}}/* {useColorModeValue('white', 'gray.800')} */
                         boxShadow={'2xl'}
                         rounded={'lg'}
                         pos={'relative'}
                         zIndex={1}>
+                              <Center>
                         <Box
                             rounded={'lg'}
-                            mt={-12}
+                            mt={-20}
                             pos={'relative'}
-                            height={'230px'}
+                            height={'115px'}
                             _after={{
                                 transition: 'all .3s ease',
                                 content: '""',
                                 w: 'full',
                                 h: 'full',
                                 pos: 'absolute',
-                                top: 5,
+                                top: 3,
                                 left: 0,
                                 backgroundImage: `url(${IMAGE})`,
                                 filter: 'blur(10px)',
                                 zIndex: -1,
+                               
                             }}
                             _groupHover={{
                                 _after: {
                                     filter: 'blur(20px)',
                                 },
                             }}>
+                             
                             <Image
                                 rounded={'lg'}
-                                height={230}
-                                width={282}
+                                height={115}
+                                width={141}
                                 objectFit={'cover'}
                                 src={country.flag}
+                                
                             />
+                           
+                         
                         </Box>
-                        <Stack pt={10} align={'center'}>
-                            <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+                        </Center>
+                        <Stack pt={5} align={'center'}>
+                            <Heading fontSize={'2xl'} fontFamily={'heading'} fontWeight={500}>
                                 {country.name}
                             </Heading>
                             <Stack direction={'row'} align={'center'}>
-                                <Text fontWeight={800} fontSize={'xl'}>
+                                <Text fontWeight={800} fontSize={'xl'}  color= 'brand.500' >
                                     {country.continent}
                                 </Text>
                             </Stack>

@@ -5,6 +5,7 @@ import { DetailCountryCardById } from '../actions'
 import s from './styles/detailCountryCard.module.css'
 
 import ActivityCard from './ActivityCard'
+import Card from './Card'
 
 export default function DetailCountryCard() {
 

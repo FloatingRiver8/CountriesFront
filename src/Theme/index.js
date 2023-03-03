@@ -12,15 +12,19 @@ const inputSelectStyles = {
     filled: {
       field: {
         _focus: {
-          borderColor: "brand.400",
+          borderColor: "orange.300",
         },
+        _hover: {
+          bg: 'none'
+        }
       },
     },
-  },
-  sizes: {
-    md: {
-      field: {
-        borderRadius: "7px",
+
+    sizes: {
+      md: {
+        field: {
+          borderRadius: "7px",
+        },
       },
     },
   },
@@ -30,28 +34,25 @@ const inputSelectStyles = {
 const buttonStyles = {
   sizes: {
     xl: {
-        borderRadius: "18px",
+      borderRadius: "18px",
     },
-    
   },
-}
-
-
+};
 
 export const theme = extendTheme(
   {
     colors: {
       brand: {
-        50: '#f5fee5',
-        100: '#edead0',
-        200: '#CDC47A',
-        300: '#766e2d',
-        400: '#BEDACD',
-        500: '#86BAA1',
+        50: "#f5fee5",
+        75: '#D7D098',
+        100: "#edead0",
+        200: "#CDC47A",
+        300: "#766e2d",
+        400: "#BEDACD",
+        500: "#86BAA1",
         orange: "#f9bc60",
         background: "#3AB795",
         darkBlue: "#272343",
-
       },
     },
 
@@ -67,20 +68,21 @@ export const theme = extendTheme(
       },
     },
   }, */
-  components:{
-    Input: {...inputSelectStyles},
-    Select: {...inputSelectStyles},
-    Button: {...buttonStyles},
-  }
+    components: {
+       Input: {...inputSelectStyles}, 
+    
+      Select: { ...inputSelectStyles },
+      Button: { ...buttonStyles },
+    },
   },
   withDefaultColorScheme({
     colorScheme: "brand",
-    
+
     components: ["Button"],
   }),
   withDefaultVariant({
     variant: "filled",
 
-    components: ["Input", "Select"],
+    components: ["Select", "Input"],
   })
 );
