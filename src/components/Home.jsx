@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { getAllCountries, filterByContinent, orderByAlphabet, orderByPopulation, getActivity, getAllActivities } from '../actions'
-
+import NavBar from './NavBar'
 import SearchBar from './SearchBar'
 import Paginate from './Paginate'
 import Card from './Card'
@@ -13,14 +13,14 @@ import Card from './Card'
 import Error from './Error'
 
 
-import { Box, SimpleGrid, Center, FormControl, FormLabel, Select, Button, Heading, Drawer,
+import { Box, SimpleGrid, Center, FormControl, FormLabel, Select, Button, Heading, Drawer, Image,
     DrawerBody,
     DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
     useDisclosure} from '@chakra-ui/react'
-
+    import logo2 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_detailed_realisti_f625f801-fd20-4512-b832-f4bbe3c78156.png'
    
   
 
@@ -126,9 +126,14 @@ function Home() {
     return (
         <Box  bg={"brand.100"} maxH='100vH'>
 
-            <Box bg={"brand.100"}  pt='2rem' pb='5rem'>
-                <Heading color='gray.500' fontSize='3.5rem'>Your world Safari!{" "}</Heading>
+<NavBar></NavBar>
 
+
+
+            <Box bg={"brand.100"}  pt='2rem' pb='5rem'>
+            
+                <Heading color='gray.500' fontSize='3.5rem'>Your world Safari!{" "}</Heading>
+          
                         {/* TO FORM ACTIVITY */}
 
                 <Box align={'right'} pr='3rem'>
@@ -146,9 +151,10 @@ function Home() {
                         </Box>
 
                     </Center>
+                   
                 </SimpleGrid>
 
-
+               
 
 {/* DRAWER */}
 
@@ -298,6 +304,8 @@ function Home() {
 
             {/* //SHOWING CARDS */}
             <Center bg='brand.100'  py={["0.5rem", "0.5rem", "1rem"]}  px={["0.5rem", "0.5rem", "2rem"]}>
+
+
                 <SimpleGrid columns={[1, 2, 3, 4]} spacing={'2rem'}>
                     {error ? (<Error />) : (country.length && country.map(el => (
                         < Link to={`/country/${el.id}`} style={{ textDecoration: 'none' }} >
