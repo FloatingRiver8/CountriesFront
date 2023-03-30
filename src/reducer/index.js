@@ -43,7 +43,7 @@ export default function rootReducer(state = initialState, action) {
 
 
     case GET_ONE_COUNTRY:
-      const paySearchbar = action.payload;
+      const paySearchbar = action.payload;//busca en el total de los paises que me traigo del back que hagan match con el name
       const payCont = action.payloadCont; //me llega el continente en que está el filtro
       const filteredByContinents = paySearchbar.filter(
         (e) => e.continent === payCont

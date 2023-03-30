@@ -17,7 +17,7 @@ export const FAILURE = "FAILURE";
 const getAllCountries = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get('/country');
+      const response = await axios.get("http://localhost:3001/country");
 
       dispatch({
         type: GET_ALL_COUNTRIES,
@@ -38,7 +38,7 @@ const getOneCountry = (payload, payloadCont) => {
   return async (dispatch) => {
     try {
       const responseOne = await axios.get(
-        `/country?name=${payload}`
+        `http://localhost:3001/country?name=${payload}`
       );
 
       dispatch({

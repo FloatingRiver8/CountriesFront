@@ -182,7 +182,7 @@ function Home() {
                                     fontWeight={"bold"} 
                                      fontSize={'md'}  
                                     color={"brand.500"}
-                                    defaultValue={'ALL CONTINENTS'}
+                                    defaultValue={'All continents'}
                                     /* placeholder="ALL CONTINENTS"  */
                                     onChange={(e) => handleOnContinents(e)}
                                 >

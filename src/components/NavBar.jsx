@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import {
     Box,
     Flex,
@@ -7,13 +9,13 @@ import {
     Stack,
     Collapse,
     Icon,
-    Link,
+    /* Link, */
     Popover,
     PopoverTrigger,
     PopoverContent,
     useColorModeValue,
     useBreakpointValue,
-    useDisclosure, Image
+    useDisclosure, Image, Center, Spacer,HStack
 } from '@chakra-ui/react';
 import {
     HamburgerIcon,
@@ -30,7 +32,8 @@ export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <Box >
+        <Center>
+        <Box  mx='1rem'  w='100%'>
             <Flex
                 bg={useColorModeValue('brand.100', 'gray.800')}
                 color={useColorModeValue('gray.600', 'white')}
@@ -40,7 +43,8 @@ export default function WithSubnavigation() {
                 borderBottom={1}
                 borderStyle={'solid'}
                 borderColor={useColorModeValue('gray.200', 'gray.900')}
-                align={'center'}>
+                align={'center'}
+                >
                 <Flex
                     flex={{ base: 1, md: 'auto' }}
                     ml={{ base: -2 }}
@@ -54,17 +58,22 @@ export default function WithSubnavigation() {
                         aria-label={'Toggle Navigation'}
                     />
                 </Flex>
-                <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'left' }}>
-
-                    <Box boxSize='75px'  >
-                        <Image src={logo1} mr={12}></Image>
-                    </Box>
-                    <Flex display={{ base: 'none', md: 'flex' }} justify={{ base: 'center', md: 'center' }}   >
-                        <DesktopNav />
-                    </Flex>
+                <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'center' }} >
+                    <Link to='/home'>
+                        <Box boxSize='75px'  >
+                            <Image src={logo1} mr={12}></Image>
+                        </Box>
+                    </Link>
+                
+                    <Stack display={{ base: 'none', md: 'flex' }} justify={{ base: 'center', md: 'center' }} bg='brand.400' px='4rem' mx='2rem' w='100%' >
+                    
+                        <DesktopNav/>
+                        
+                    </Stack>
+                    
                 </Flex>
 
-                <Stack
+{/*                 <Stack
                     flex={{ base: 1, md: 0 }}
                     justify={'flex-end'}
                     direction={'row'}
@@ -90,13 +99,15 @@ export default function WithSubnavigation() {
                         }}>
                         Sign Up
                     </Button>
-                </Stack>
+                </Stack> */}
             </Flex>
 
             <Collapse in={isOpen} animateOpacity>
                 <MobileNav />
             </Collapse>
         </Box>
+        </Center>
+       
     );
 }
 
@@ -106,22 +117,26 @@ const DesktopNav = () => {
     const popoverContentBgColor = useColorModeValue('brand.100', 'gray.800');
 
     return (
-        <Stack direction={'row'} spacing={4}>
+        <Center>
+        <Flex direction={'row'} spacing={8} align="center" w='100%'>
             {NAV_ITEMS.map((navItem) => (
-                <Box key={navItem.label}>
+                <Box key={navItem.label} w='100%' h='10' >
                     <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
-                            <Link
+                            <Link  to={navItem.href ?? '#'}>
+                            <Button
                                 p={2}
-                                href={navItem.href ?? '#'}
-                                fontSize={'sm'}
-                                fontWeight={500}
-                                color={linkColor}
+                               
+                                fontSize={'lg'}
+                                fontWeight={500}                            
+                                color={'brand.500'}
+                                bg={'brand.400'}
                                 _hover={{
                                     textDecoration: 'none',
                                     color: linkHoverColor,
                                 }}>
                                 {navItem.label}
+                                </Button>
                             </Link>
                         </PopoverTrigger>
 
@@ -133,17 +148,21 @@ const DesktopNav = () => {
                                 p={4}
                                 rounded={'xl'}
                                 minW={'sm'}>
-                                <Stack>
+                                <Flex w='100%'>
                                     {navItem.children.map((child) => (
                                         <DesktopSubNav key={child.label} {...child} />
+                                        
                                     ))}
-                                </Stack>
+                                   
+                                </Flex>
                             </PopoverContent>
                         )}
                     </Popover>
                 </Box>
+                
             ))}
-        </Stack>
+        </Flex>
+        </Center>
     );
 };
 
@@ -244,50 +263,57 @@ const MobileNavItem = ({ label, children, href }) => {
     );
 };
 
-/*   interface NavItem {
+/*  interface NavItem {
     label: string;
     subLabel?: string;
     children?: Array<NavItem>;
     href?: string;
-  } */
+  }  */
 
 const NAV_ITEMS = [
+
     {
         label: 'To landing',
-        children: [
-            {
-                label: 'Explore Design Work',
-                subLabel: 'Trending Design to inspire you',
-                href: '#',
-            },
-            {
-                label: 'New & Noteworthy',
-                subLabel: 'Up-and-coming Designers',
-                href: '#',
-            },
-        ],
+        href: '/',
+
+
+
+        /*     <NavItem href: '/'> </NavItem>   */
+        /*         children: [
+                    {
+                        label: 'Explore Design Work',
+                        subLabel: 'Trending Design to inspire you',
+                        href: '#',
+                    },
+                    {
+                        label: 'New & Noteworthy',
+                        subLabel: 'Up-and-coming Designers',
+                        href: '#',
+                    },
+                ], */
     },
     {
         label: 'About us',
-        children: [
-            {
-                label: 'Job Board',
-                subLabel: 'Find your dream design job',
-                href: '#',
-            },
-            {
-                label: 'Freelance Projects',
-                subLabel: 'An exclusive list for contract work',
-                href: '#',
-            },
-        ],
+        href: '/about'
+        /*         children: [
+                    {
+                        label: 'Job Board',
+                        subLabel: 'Find your dream design job',
+                        href: '#',
+                    },
+                    {
+                        label: 'Freelance Projects',
+                        subLabel: 'An exclusive list for contract work',
+                        href: '#',
+                    },
+                ], */
     },
     {
         label: 'Create activity',
-        href: '#',
+        href: '/form',
     },
-    {
-        label: 'Hire Designers',
-        href: '#',
-    },
+    /*     {
+            label: 'Hire Designers',
+            href: '#',
+        }, */
 ];

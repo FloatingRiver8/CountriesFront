@@ -27,7 +27,7 @@ export default function SearchBar({ contFilter }) {
 
         dispatch(getOneCountry(e.target.value, contFilter))
         /*  setAcuseState(e.target.value) */
-        /* console.log(e.target.value) */
+         console.log(e.target.value) 
     }
 
 
