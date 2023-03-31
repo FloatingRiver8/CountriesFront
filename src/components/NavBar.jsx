@@ -129,7 +129,7 @@ const DesktopNav = () => {
                                
                                 fontSize={'lg'}
                                 fontWeight={500}                            
-                                color={'brand.500'}
+                                color={'brand.300'}
                                 bg={'brand.400'}
                                 _hover={{
                                     textDecoration: 'none',
