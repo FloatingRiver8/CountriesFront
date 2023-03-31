@@ -65,7 +65,7 @@ export default function WithSubnavigation() {
                         </Box>
                     </Link>
                 
-                    <Stack display={{ base: 'none', md: 'flex' }} justify={{ base: 'center', md: 'center' }} bg='brand.400' px='4rem' mx='2rem' w='100%' >
+                    <Stack display={{ base: 'none', md: 'flex' }} justify={{ base: 'center', md: 'center' }} bg='brand.100' boxShadow='md' px='4rem' mx='2rem' w='100%' >
                     
                         <DesktopNav/>
                         
@@ -126,11 +126,11 @@ const DesktopNav = () => {
                             <Link  to={navItem.href ?? '#'}>
                             <Button
                                 p={2}
-                               
+                                bg='brand.100'
                                 fontSize={'lg'}
                                 fontWeight={500}                            
                                 color={'brand.300'}
-                                bg={'brand.400'}
+                                /* bg={'brand.400'} */
                                 _hover={{
                                     textDecoration: 'none',
                                     color: linkHoverColor,
@@ -140,7 +140,7 @@ const DesktopNav = () => {
                             </Link>
                         </PopoverTrigger>
 
-                        {navItem.children && (
+{/*                         {navItem.children && (
                             <PopoverContent
                                 border={0}
                                 boxShadow={'xl'}
@@ -156,7 +156,7 @@ const DesktopNav = () => {
                                    
                                 </Flex>
                             </PopoverContent>
-                        )}
+                        )} */}
                     </Popover>
                 </Box>
                 
@@ -166,7 +166,7 @@ const DesktopNav = () => {
     );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+/* const DesktopSubNav = ({ label, href, subLabel }) => {
     return (
         <Link
             href={href}
@@ -199,7 +199,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
         </Link>
     );
 };
-
+ */
 const MobileNav = () => {
     return (
         <Stack
@@ -218,10 +218,10 @@ const MobileNavItem = ({ label, children, href }) => {
 
     return (
         <Stack spacing={4} onClick={children && onToggle}>
-            <Flex
+            <Link
                 py={2}
                 as={Link}
-                href={href ?? '#'}
+                to={href ?? '#'}
                 justify={'space-between'}
                 align={'center'}
                 _hover={{
@@ -241,7 +241,7 @@ const MobileNavItem = ({ label, children, href }) => {
                         h={6}
                     />
                 )}
-            </Flex>
+            </Link>
 
             <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
                 <Stack

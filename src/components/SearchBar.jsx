@@ -37,7 +37,7 @@ export default function SearchBar({ contFilter }) {
         <div>
 
             {/* //SearchBar */}
-            <Box bg={"brand.green.100"}>
+            <Box bg={"brand.green.100"} pt='1rem'>
 
                 <Box w='100%' pb='1rem'/* mt={['2rem', '2rem', '3rem']} ml={['0rem', '0', '0']} */>
                     <InputGroup >
