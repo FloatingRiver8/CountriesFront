@@ -75,6 +75,7 @@
 
 .form_ul {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 }
@@ -82,9 +83,10 @@
 .form_ulLi {
 
     padding: 0.2rem;
-    background-color: aqua;
+    background-color: rgb(236, 186, 4);
     border-radius: 7px;
-
+    list-style: none;
+    flex-wrap: wrap;
 }
 
 .form_ulLi:hover {

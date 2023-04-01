@@ -19,7 +19,11 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Select
+  Select,
+  SimpleGrid,
+  Center,
+  UnorderedList,
+  ListItem
   /* Link, */
 } from '@chakra-ui/react';
 
@@ -28,7 +32,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 let wordAtLeastOneLetter = new RegExp('^[a-zA-Z]{3,}$')
 let regOneToFive = new RegExp('^[1-5]$')
-let regOneToTen = new RegExp('^[1-9]$')
+let regOneToTen = new RegExp('^[1-24]$')
 
 
 
@@ -39,13 +43,13 @@ const validateForm = (input) => {
     inputError.name = "Name required"
   } else { inputError.name = "" }
   if (!input.difficulty) {
-    inputError.difficulty = "A number is required"
+    inputError.difficulty = "An option is required"
   } else { inputError.difficulty = "" }
   if (!regOneToFive.test(input.difficulty)) {
-    inputError.difficulty = "value must be under 5"
   } else { inputError.difficulty = "" }
+    inputError.difficulty = "Choose your difficulty"
   if (!regOneToTen.test(input.duration)) {
-    inputError.duration = "value must be under 10"
+    inputError.duration = "An option is required"
   } else { inputError.duration = "" }
   return inputError
 }
@@ -72,8 +76,8 @@ function Form() {
 
   const season = ['Winter', 'Spring', 'Autumn', 'Summer'];
 
-  const duration = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 0, 21, 22, 23, 24]
-
+  const duration = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+  const difficulty = ['Rookie', 'I can do it', 'Like a pro'];
 
   useEffect(() => {
     dispatch(getAllCountries())
@@ -159,16 +163,14 @@ function Form() {
 
   }
 
-  const [showPassword, setShowPassword] = useState(false);
-
   //Render
 
   return (
-    <div className={`${s.form_mainDiv}`}>
+    <Box bg="brand.100">
       <Link to='/home'>
         <button className={`${s.form_toHomeBtn}`}>Home</button>
       </Link>
-      <h1>Create your activity</h1>
+
 
       {/*  
       <form onSubmit={handleSubmit} >
@@ -254,14 +256,14 @@ function Form() {
         minH={'100vh'}
         align={'center'}
         justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
+        bg={useColorModeValue('brand.100', 'gray.800')}>
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={'4xl'} textAlign={'center'}>
-              Sign up
+              Create your activity!
             </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
-              to enjoy all of our cool features ✌️
+              In the mood for... ✌️
             </Text>
           </Stack>
 
@@ -269,15 +271,15 @@ function Form() {
           <form onSubmit={handleSubmit} >
             <Box
               rounded={'lg'}
-              bg={useColorModeValue('white', 'gray.700')}
+              bg={useColorModeValue('brand.400', 'gray.700')}
               boxShadow={'lg'}
               p={8}>
               <Stack spacing={4}>
                 <HStack>
 
-                  <Box >
+                  <Box>
 
-                    <FormControl id="firstName" isRequired>
+                    <FormControl id="activity" isRequired>
                       <FormLabel>Activity name</FormLabel>
                       <Input type="text"
                         value={input.name}
@@ -287,10 +289,10 @@ function Form() {
                     </FormControl>
                   </Box>
                   <Box>
-                    <FormControl id="lastName">
+                    <FormControl id="season" isRequired>
                       <FormLabel>Season</FormLabel>
-                      <Select onChange={handleSeason} required>
-                        <option value="" hidden>Select season</option>
+                      <Select onChange={handleSeason}>
+                        <option value="" hidden></option>
                         {season.map(e => (
                           <option value={e} name="season" key={e} >{e}</option>
                         ))}
@@ -298,28 +300,33 @@ function Form() {
                     </FormControl>
                   </Box>
                 </HStack>
-                <FormControl id="email" isRequired>
-                  <FormLabel>Duration</FormLabel>
-                  <Select
-                    value={input.duration}
-                    name='duration' onChange={handleChange} >
-                    {duration.map(e => (
-                      <option value={e} name="duration" key={e} >{e}</option>
-                    ))}
-                  </Select>
-                  {inputError.duration && (<p className={`${s.form_error}`}>{inputError.duration}</p>)}
-                </FormControl>
-                <FormControl id="password" isRequired>
-                  <FormLabel>Difficulty</FormLabel>
-                  <Input type='text'
-                    value={input.difficulty}
-                    name='difficulty'
-                    onChange={handleChange} />
-                  {inputError.difficulty && (<p className={`${s.form_error}`}>{inputError.difficulty}</p>)}
+                <HStack>
+                  <FormControl id="duration" isRequired>
+                    <FormLabel>Duration in hours</FormLabel>
+                    <Select
+                      value={input.duration}
+                      name='duration' onChange={handleChange} >
+                      {duration.map(e => (
+                        <option value={e} name="duration" key={e} >{e}</option>
+                      ))}
+                    </Select>
+                    {inputError.duration && (<p className={`${s.form_error}`}>{inputError.duration}</p>)}
+                  </FormControl>
+                  <FormControl id="difficulty" isRequired>
+                    <FormLabel>Difficulty</FormLabel>
 
-                </FormControl>
+                    <Select
+                      value={input.difficulty}
+                      name='difficulty' onChange={handleChange} >
+                      {difficulty.map(e => (
+                        <option value={e} name="difficulty" key={e} >{e}</option>
+                      ))}
+                    </Select>
+                    {inputError.difficulty && (<p className={`${s.form_error}`}>{inputError.difficulty}</p>)}
+                  </FormControl>
+                </HStack>
 
-                <FormControl id="password" isRequired>
+                <FormControl id="countries" isRequired>
                   <FormLabel>Countries</FormLabel>
                   <Select onChange={handleSelect}>Countries:
 
@@ -333,20 +340,30 @@ function Form() {
                     })}
 
                   </Select>
-
-                  {/* Renderizado de los countries seleccionados y su delete */}
-                  <Box className={`${s.form_ul}`}>
-                    <ul >
-                      <li>{input.countries.map(el =>
-                        <Box onClick={() => handleDelete(el)} key={el} className={`${s.form_ulLi}`}>
-                          {el}
-                        </Box>
-                      )} </li>
-                    </ul>
-                  </Box>
-
-
                 </FormControl>
+                {/* Renderizado de los countries seleccionados y su delete */}
+                {/* <Box className={`${s.form_ul}`}> */}
+                <Center>
+                <Box w='50%'>
+                  <UnorderedList >
+                    
+                      <SimpleGrid columns={[2, null, 4]} spacing='6px'>
+                        {input.countries.map(el =>
+
+                          <ListItem onClick={() => handleDelete(el)} key={el}  className={`${s.form_ulLi}`}  >
+                            {el}
+                          </ListItem>
+
+                        )}
+                      </SimpleGrid>
+                    
+                  </UnorderedList>
+                </Box>
+                </Center>
+                {/* </Box> */}
+
+
+
 
                 <Stack spacing={10} pt={2}>
                   <Button
@@ -375,7 +392,7 @@ function Form() {
 
 
 
-    </div>
+    </Box>
   )
 }
 

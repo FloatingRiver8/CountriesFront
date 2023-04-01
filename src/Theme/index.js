@@ -38,6 +38,11 @@ const buttonStyles = {
     },
   },
 };
+const listItemStyles ={
+  
+  
+  bg: "blue.100"
+}
 
 export const theme = extendTheme(
   {
@@ -73,6 +78,7 @@ export const theme = extendTheme(
     
       Select: { ...inputSelectStyles },
       Button: { ...buttonStyles },
+      ListItem: {...listItemStyles}
     },
   },
   withDefaultColorScheme({
