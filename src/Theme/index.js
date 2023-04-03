@@ -15,7 +15,7 @@ const inputSelectStyles = {
           borderColor: "orange.300",
         },
         _hover: {
-          bg: 'none'
+          bg: 'brand.100'
         }
       },
     },
