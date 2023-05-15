@@ -9,6 +9,7 @@ import Form from "./components/Form";
 import DetailCountryCard from "./components/DetailCountryCard";
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from "./Theme";
+import AboutUs from "./components/AboutUs";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <div className="App">
         <Route exact path="/" component={LandingPage}></Route>
         <Route exact path="/home" component={Home}></Route>
+        <Route exact path="/about" component={AboutUs}></Route>
         <Route exact path="/form" component={Form}></Route>
         <Route exact path="/country/:id" component={DetailCountryCard}></Route>
       </div>

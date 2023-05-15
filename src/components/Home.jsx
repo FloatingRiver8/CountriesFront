@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Grid } from  'react-loader-spinner'
 
 import { getAllCountries, filterByContinent, orderByAlphabet, orderByPopulation, getActivity, getAllActivities } from '../actions'
 import NavBar from './NavBar'
@@ -11,6 +12,7 @@ import Card from './Card'
 
 
 import Error from './Error'
+import g from './styles/spinner.module.css'
 
 
 import {
@@ -30,10 +32,15 @@ import logo2 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_detai
 
 function Home() {
     const dispatch = useDispatch()
-    const allCountries = useSelector((state) => state.allCountries)
+    const allCountries = [] /* useSelector((state) => state.allCountries)  */
     const [alphOrder, setAlphOrder] = useState("")  // para provocar el renderizado
     const [popOrder, setPopOrder] = useState("")
     const [contFilter, setContFilter] = useState("")
+
+
+    //loading spinner
+    /* const [loading, setLoading] = useState(true); */
+
 
     const error = useSelector(state => state.error)
 
@@ -85,8 +92,6 @@ function Home() {
     }, [dispatch,])
 
 
-
-
     const handleOnContinents = (e) => {
         dispatch(filterByContinent(e.target.value, contFilter))
 
@@ -122,18 +127,15 @@ function Home() {
 
     }
 
-
-
-
+ 
     return (
+
         <Box bg={"brand.100"} maxH='100vH'>
 
             <NavBar></NavBar>
 
 
-
             <Box bg={"brand.100"} pt='2rem' pb='5rem'>
-
                 <Heading color='gray.500' fontSize='3.5rem'>Your world Safari!{" "}</Heading>
 
                 {/* TO FORM ACTIVITY */}
@@ -294,8 +296,12 @@ function Home() {
 
 
             {/* //SHOWING CARDS */}
-            <Center bg='brand.100' py={["0.5rem", "0.5rem", "0rem"]} px={["0.5rem", "0.5rem", "2rem"]}>
 
+           
+           { allCountries.length > 0 ?
+
+            <Center bg='brand.100' py={["0.5rem", "0.5rem", "0rem"]} px={["0.5rem", "0.5rem", "2rem"]}>
+          
 
                 <SimpleGrid columns={[1, 2, 3, 4]} spacing={'2rem'}>
                     {error ? (<Error />) : (country.length && country.map(el => (
@@ -314,12 +320,19 @@ function Home() {
                     </SimpleGrid>
                 </SimpleGrid>
             </Center>
-
+           :
+           <Center>
+           <div className={`${g.grid}`}>
+            <Grid  color="#86BAA1" height="160" width="160"/>
+           </div>
+           </Center>
+}
         </Box>
 
-
+        
     )
 }
+
 
 
 export default Home

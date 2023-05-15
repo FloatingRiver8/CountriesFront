@@ -1,0 +1,16 @@
+
+
+.grid{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+      height:20rem;
+    width: 20rem;
+
+    /* background-color: blue; */
+
+}
+
+.grid_spinner{
+    color:#aa4d2b;
+}
