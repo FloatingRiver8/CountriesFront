@@ -9,6 +9,7 @@ import NavBar from './NavBar'
 import SearchBar from './SearchBar'
 import Paginate from './Paginate'
 import Card from './Card'
+import Footer from './Footer'
 
 
 import Error from './Error'
@@ -327,6 +328,8 @@ function Home() {
            </div>
            </Center>
 }
+
+<Footer> </Footer>
         </Box>
 
         

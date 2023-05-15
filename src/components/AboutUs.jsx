@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from './Footer'
 import {
   Box, Text, Stack,   Accordion,
   AccordionItem,
@@ -128,7 +129,11 @@ function AboutUs() {
     </Text>
 
     </Stack>
+
+    <Footer> </Footer>
     </Box>
+
+
   )
 }
 
