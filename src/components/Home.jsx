@@ -11,7 +11,6 @@ import Paginate from './Paginate'
 import Card from './Card'
 import Footer from './Footer'
 
-
 import Error from './Error'
 import g from './styles/spinner.module.css'
 

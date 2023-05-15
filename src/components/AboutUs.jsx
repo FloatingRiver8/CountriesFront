@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from './Footer'
+import logo1 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_detailed_realisti_12de2200-fb0b-4107-8c10-9f7e323a9db6.png'
 import {
   Box, Text, Stack,   Accordion,
   AccordionItem,
