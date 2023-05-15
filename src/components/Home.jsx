@@ -32,7 +32,7 @@ import logo2 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_detai
 
 function Home() {
     const dispatch = useDispatch()
-    const allCountries = [] /* useSelector((state) => state.allCountries)  */
+    const allCountries = useSelector((state) => state.allCountries)  
     const [alphOrder, setAlphOrder] = useState("")  // para provocar el renderizado
     const [popOrder, setPopOrder] = useState("")
     const [contFilter, setContFilter] = useState("")
