@@ -16,7 +16,7 @@ import {
   import { ReactNode } from 'react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { BiMailSend } from 'react-icons/bi';
-  import logo1 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_detailed_realisti_12de2200-fb0b-4107-8c10-9f7e323a9db6.png'
+  import logo1 from '../assets/World_Safari_travel_transparentLogo.gif'
   
   const Logo = () => {
     return (

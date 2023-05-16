@@ -24,7 +24,7 @@ import {
     ChevronRightIcon,
 } from '@chakra-ui/icons';
 
-import logo1 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_detailed_realisti_12de2200-fb0b-4107-8c10-9f7e323a9db6.png'
+import logo1 from '../assets/World_Safari_travel_transparentLogo.gif'
 /* import logo2 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_detailed_realisti_f625f801-fd20-4512-b832-f4bbe3c78156.png'
 import logo3 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_jeep_in_color_pal_0258f0b8-ca4d-4e55-9da3-5656db6dcd79.png' */
 

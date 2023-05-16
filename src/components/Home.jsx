@@ -24,7 +24,7 @@ import {
     DrawerContent,
     useDisclosure
 } from '@chakra-ui/react'
-import logo2 from '../assets/Marian_M_Logo_for_World_Safari_travel_website_detailed_realisti_f625f801-fd20-4512-b832-f4bbe3c78156.png'
+
 
 
 
