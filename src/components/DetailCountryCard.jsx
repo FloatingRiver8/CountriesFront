@@ -6,6 +6,15 @@ import s from './styles/detailCountryCard.module.css'
 
 import ActivityCard from './ActivityCard'
 import Card from './Card'
+import NavBar from './NavBar'
+
+
+import {
+    Box,Text, SimpleGrid, Center, Image,
+
+} from '@chakra-ui/react'
+
+
 
 export default function DetailCountryCard() {
 
@@ -20,6 +29,7 @@ export default function DetailCountryCard() {
 
     const handleClick = () => {
         setIsVisible(!isVisible) //para las actividades, renderizado con botón
+    console.log("click")
     }
 
 
@@ -31,46 +41,83 @@ export default function DetailCountryCard() {
 
 
     /* Las Actividades que me vienen incluidas en el estado oneCountry ya que en el back le sumé que me traiga lo que esté en la BD del modelo Activities */
+    const IMAGE =
+        'https://images.pexels.com/photos/220177/pexels-photo-220177.jpeg?auto=compress&cs=tinysrgb&w=800';
 
+        
     return (
 
+        <Box bg={"brand.100"}  w='100%' >
 
-        <div className={`${s.DetailCountryCard_main}`}>
-
-            {/* Botón a Home */}
-            <div className={`${s.DetailCountryCard_btnsMain}`} >
-                <Link to='/home'>
-                    <button className={`${s.DetailCountryCard_btnHome}`} >
-                        Home
-                    </button>
-                </Link>
-
-                {/* Botón despliega actividades */}
-                <button onClick={handleClick} className={`${s.DetailCountryCard_btnActivity}`} > Show activity </button>
-            </div>
-
+            <NavBar />
 
             {/* ID Card render */}
-            <div className={`${s.div_DetailCountryCard}`} key={oneById.id}>
 
-                <div className={`${s.DetailCountryCard_card}`}>
-                    <h1>{oneById.name}</h1>
-                    <h2>Capital: {oneById.capital}</h2>
-                    <p>Id:{oneById.id}</p>
-                    <img src={oneById.urlFlag} alt="flag" height='150px' width='210px' />
-                    <p>Continent: {oneById.continent}</p>
-                    <p>Subregion: {oneById.subregion}</p>
-                    <p>Area: {oneById.area}</p>
-                    <p>Population: {oneById.population}</p>
-                   
+    <Center pt='6rem'>
+            <Box 
+                p={10}
+                maxW={'330px'}
+                w={'full'}
+                bg="brand.100"
+                boxShadow={'2xl'}
+                rounded={'lg'}
+                pos={'relative'}
+                zIndex={1}>
+                    
+                <Center>
+                    <Box
+                        rounded={'lg'}
+                        mt={-20}
+                        pos={'relative'}
+                        height={'115px'}
+                        _after={{
+                            transition: 'all .3s ease',
+                            content: '""',
+                            w: 'full',
+                            h: 'full',
+                            pos: 'absolute',
+                            top: 3,
+                            left: 0,
+                            backgroundImage: `url(${IMAGE})`,
+                            filter: 'blur(10px)',
+                            zIndex: -1,
 
-                    {/* Para renderizar las cartitas de las activities */}
-                </div>
-                {isVisible && <ActivityCard oneById = {oneById} />}
-            </div>
+                        }}
+                        _groupHover={{
+                            _after: {
+                                filter: 'blur(20px)',
+                            },
+                        }}>
+
+                    <Image
+                    rounded={'lg'}
+                    height={115}
+                    width={141}
+                    objectFit={'cover'}
+                    src={oneById.urlFlag}
+                    />
+
+                    </Box>
+                </Center>
 
 
-        </div>
+            <Box pt='6'>
+                <Text>{oneById.name}</Text>
+                <Text>Capital: {oneById.capital}</Text>
+                <Text>Id:{oneById.id}</Text>
+                <Text>Continent: {oneById.continent}</Text>
+                <Text>Subregion: {oneById.subregion}</Text>
+                <Text>Area: {oneById.area}</Text>
+                <Text>Population: {oneById.population}</Text>
+            </Box>
+                </Box>
+
+</Center>
+           
+            <ActivityCard oneById={oneById} />
+           
+        </Box>
+
     )
 }
 

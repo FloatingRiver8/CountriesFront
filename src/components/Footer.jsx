@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom'
 import {
     Box,
     chakra,
     Container,
-    Link,
+    /* Link, */
     SimpleGrid,
     Stack,
     Text,
@@ -31,10 +32,6 @@ import {
     children,
     label,
     href,
-  }: {
-    children: ReactNode;
-    label: string;
-    href: string;
   }) => {
     return (
       <chakra.button
@@ -58,7 +55,7 @@ import {
     );
   };
   
-  const ListHeader = ({ children }: { children: ReactNode }) => {
+  const ListHeader = ({ children }) => {
     return (
       <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
         {children}
@@ -76,13 +73,15 @@ import {
             templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }}
             spacing={8}>
             <Stack spacing={6}>
-              <Box>
+              <Box alignSelf={'center'}>
+              <Link to='/home'>
                 <Logo color={useColorModeValue('gray.700', 'white')} />
+                </Link>
               </Box>
               <Text fontSize={'sm'}>
-                © 2022 Chakra Templates. All rights reserved
+                © 2023 YWS. All rights reserved
               </Text>
-              <Stack direction={'row'} spacing={6}>
+              <Stack direction={'row'} spacing={6} alignSelf={'center'}>
                 <SocialButton label={'Twitter'} href={'#'}>
                   <FaTwitter />
                 </SocialButton>

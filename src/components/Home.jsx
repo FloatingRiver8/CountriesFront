@@ -153,9 +153,7 @@ function Home() {
                         <Box w={["80%", "70%", "40%", "30%"]} >
                             <SearchBar contFilter={contFilter} />
                         </Box>
-
                     </Center>
-
                 </SimpleGrid>
 
 
