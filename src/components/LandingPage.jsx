@@ -8,10 +8,9 @@ function LandingPage() {
         <div className={`${s.landing_cardDiv}`}>
 
             <Link to='/home'><Button colorScheme='teal' variant='outline' className={`${s.landing_button}`}>
-                Wellcome!
+                Welcome!
             </Button></Link>
         </div>
-
 
     )
 }
