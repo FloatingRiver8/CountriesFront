@@ -149,14 +149,14 @@ function Form() {
 
     <Box >
       Get prepared, {input.name} is on the list!
-      <Button  my='0.7rem' onClick={handleAlertAndHome}>
+      <Button my='0.7rem' onClick={handleAlertAndHome}>
         close
       </Button>
     </Box>
 
 
   ), {
-    
+
     duration: Infinity
   });
 
@@ -201,13 +201,13 @@ function Form() {
 
 
       <div   >
-        <Toaster   toastOptions={{
-    className: '',
-    style: {
-      padding: '16px',
-      backgroundColor: "#FEEBC8",
-    } 
-  }}  gutter={24} />
+        <Toaster toastOptions={{
+          className: '',
+          style: {
+            padding: '16px',
+            backgroundColor: "#FEEBC8",
+          }
+        }} gutter={24} />
       </div>
 
 
